@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: vehicle-classification-app
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./models:/app/models:ro
+    restart: unless-stopped

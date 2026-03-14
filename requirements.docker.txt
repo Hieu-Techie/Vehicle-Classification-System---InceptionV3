@@ -1,0 +1,7 @@
+# Docker runtime dependencies (lighter than local dev environment)
+# Keep this file focused on inference-serving only.
+
+tensorflow-cpu==2.15.1
+streamlit==1.30.0
+pillow==10.4.0
+numpy==1.26.4
