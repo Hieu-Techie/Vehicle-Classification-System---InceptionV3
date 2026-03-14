@@ -29,8 +29,6 @@
 |- scripts/
 |  |- qa/evaluate_model.py
 |  |- qa/webapp_smoke_test.py
-|- docs/
-|  |- handover_checklist.md
 |- MODEL_CARD.md
 ```
 
