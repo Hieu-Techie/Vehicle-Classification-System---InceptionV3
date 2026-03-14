@@ -100,9 +100,11 @@ data/processed/
 |- test/bicycle|bus|car|motorcycle|truck
 ```
 
-## 5. Lệnh QA cho Phase 4
+## 5. Lệnh kiểm tra chất lượng (QA)
 
-Chạy đánh giá model (TD-001 đến TD-003):
+Phần này gồm các lệnh dùng để kiểm tra chất lượng model và độ ổn định của ứng dụng trước khi phát hành.
+
+Chạy đánh giá model:
 
 ```powershell
 python scripts/qa/evaluate_model.py
@@ -113,7 +115,7 @@ File đầu ra:
 - `models/logs/confusion_matrix.csv`
 - `models/logs/classification_report.md`
 
-Chạy smoke test web app (TD-004 đến TD-006):
+Chạy smoke test web app:
 
 ```powershell
 python scripts/qa/webapp_smoke_test.py
