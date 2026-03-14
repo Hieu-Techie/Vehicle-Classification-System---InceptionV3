@@ -1,11 +1,3 @@
-"""Phase 4 web app smoke tests.
-
-Covers:
-- TD-004: valid upload formats
-- TD-005: invalid file handling
-- TD-006: repeated inference stability and latency
-"""
-
 from __future__ import annotations
 
 import json
