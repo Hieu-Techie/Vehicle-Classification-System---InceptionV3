@@ -61,6 +61,12 @@ streamlit run app.py
 
 ## 4. Yêu cầu về model và dữ liệu
 
+### 🚀 Cài đặt Mô hình (Bắt buộc)
+Vì file trọng số (weights) của AI khá nặng nên không được lưu trực tiếp trong mã nguồn. Để chạy được ứng dụng, bạn vui lòng làm theo 2 bước sau:
+1. Tải file mô hình `inception_v3_final.h5` tại mục **[Releases](https://github.com/Hieu-Techie/Vehicle-Classification-System---InceptionV3/releases/download/v1.0.0/inception_v3_final.h5)** của dự án này.
+2. Tạo thư mục `models/final/` trong thư mục gốc của dự án (nếu chưa có).
+3. Copy file vừa tải về bỏ vào đường dẫn chuẩn: `models/final/inception_v3_final.h5`.
+
 Ứng dụng cần:
 - Final model tại `models/final/inception_v3_final.h5`
 - Cấu hình 5 class trong `src/utils/config.py`
