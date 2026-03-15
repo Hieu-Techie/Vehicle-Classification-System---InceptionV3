@@ -1,90 +1,112 @@
-# Hệ thống Phân loại Phương tiện Việt Nam (InceptionV3)
+# Vehicle Classification System with InceptionV3
 
-Ứng dụng Streamlit local để phân loại ảnh phương tiện với 5 lớp:
-- bicycle
-- bus
-- car
-- motorcycle
-- truck
+![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-FF6F00?logo=tensorflow&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20App-FF4B4B?logo=streamlit&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker&logoColor=white)
 
-## 1. Cấu trúc dự án
+Hệ thống phân loại phương tiện từ ảnh tĩnh với 5 lớp, dùng InceptionV3 và giao diện Streamlit chạy local.
 
-```text
-.
-|- app.py
-|- requirements.txt
-|- data/
-|  |- processed/
-|     |- train/<class_name>/
-|     |- val/<class_name>/
-|     |- test/<class_name>/
-|- models/
-|  |- checkpoints/inception_v3_best.h5
-|  |- final/inception_v3_final.h5
-|  |- logs/
-|- src/
-|  |- data/
-|  |- models/
-|  |- utils/
-|- scripts/
-|  |- qa/evaluate_model.py
-|  |- qa/webapp_smoke_test.py
-|- MODEL_CARD.md
+A 5-class vehicle image classification system using InceptionV3 with a local Streamlit interface.
+
+## 📋 Mục lục / Table of Contents
+
+- [✨ Tính năng / Features](#-tính-năng--features)
+- [💻 Yêu cầu hệ thống / Requirements](#-yêu-cầu-hệ-thống--requirements)
+- [🚀 Cài đặt / Installation](#-cài-đặt--installation)
+- [📖 Cách sử dụng / Usage](#-cách-sử-dụng--usage)
+- [🧠 Mô hình và dữ liệu / Model & Dataset](#-mô-hình-và-dữ-liệu--model--dataset)
+- [🧪 Kiểm thử chất lượng / QA](#-kiểm-thử-chất-lượng--qa)
+- [📊 Kết quả hiện tại / Current Metrics](#-kết-quả-hiện-tại--current-metrics)
+- [🐳 Docker](#-docker)
+- [📁 Cấu trúc thư mục / Project Structure](#-cấu-trúc-thư-mục--project-structure)
+- [🛠️ Xử lý sự cố / Troubleshooting](#️-xử-lý-sự-cố--troubleshooting)
+- [🤝 Đóng góp / Contributing](#-đóng-góp--contributing)
+- [📝 Giấy phép / License](#-giấy-phép--license)
+- [📧 Liên hệ / Contact](#-liên-hệ--contact)
+- [🌟 Acknowledgments](#-acknowledgments)
+
+## ✨ Tính năng / Features
+
+- 🚗 Phân loại 5 lớp phương tiện: bicycle, bus, car, motorcycle, truck
+- 🧠 Mô hình InceptionV3 fine-tuned cho bài toán phân loại ảnh giao thông
+- 🌐 Web app Streamlit upload ảnh và dự đoán trực tiếp
+- 🧪 Có script đánh giá model và smoke test web app
+- 🐳 Hỗ trợ chạy local và Docker
+
+## 💻 Yêu cầu hệ thống / Requirements
+
+- Python 3.11+
+- pip
+- Docker Desktop (tuỳ chọn, nếu chạy container)
+- PowerShell/Bash
+
+## 🚀 Cài đặt / Installation
+
+1. Clone repository
+
+```powershell
+git clone https://github.com/Hieu-Techie/Vehicle-Classification-System---InceptionV3.git
+cd "Vehicle Classification System - InceptionV3"
 ```
 
-## 2. Cài đặt local
-
-### Yêu cầu trước
-- Python 3.11+
-- Windows PowerShell (hoặc shell tương đương)
-
-### Tạo và kích hoạt môi trường ảo
+2. Tạo môi trường ảo
 
 ```powershell
 python -m venv venv
-.\venv\Scripts\Activate.ps1
 ```
 
-### Cài dependency
+3. Kích hoạt môi trường ảo
+
+```powershell
+# Windows
+.\venv\Scripts\Activate.ps1
+
+# Linux/Mac
+source venv/bin/activate
+```
+
+4. Cài thư viện
 
 ```powershell
 pip install -r requirements.txt
 ```
 
-## 3. Chạy ứng dụng
+## 📖 Cách sử dụng / Usage
+
+1. Đảm bảo bạn đã có:
+- Model ở đường dẫn: models/final/inception_v3_final.h5
+- Dataset ở đường dẫn: data/processed/
+
+2. Chạy ứng dụng
 
 ```powershell
 streamlit run app.py
 ```
 
-Địa chỉ mặc định: http://localhost:8501
+3. Mở trình duyệt tại:
+- http://localhost:8501
 
-## 4. Yêu cầu về model và dữ liệu
+4. Upload ảnh định dạng jpg, jpeg hoặc png để dự đoán lớp phương tiện.
 
-### 🚀 Cài đặt Mô hình (Bắt buộc)
-Vì file trọng số (weights) của AI khá nặng nên không được lưu trực tiếp trong mã nguồn. Để chạy được ứng dụng, bạn vui lòng làm theo 2 bước sau:
-1. Tải file mô hình `inception_v3_final.h5` tại mục **[Releases](https://github.com/Hieu-Techie/Vehicle-Classification-System---InceptionV3/releases/download/v1.0.0/inception_v3_final.h5)** của dự án này.
-2. Tạo thư mục `models/final/` trong thư mục gốc của dự án (nếu chưa có).
-3. Copy file vừa tải về bỏ vào đường dẫn chuẩn: `models/final/inception_v3_final.h5`.
+## 🧠 Mô hình và dữ liệu / Model & Dataset
 
-Ứng dụng cần:
-- Final model tại `models/final/inception_v3_final.h5`
-- Cấu hình 5 class trong `src/utils/config.py`
-- Log đánh giá trong `models/logs/`
+### Trọng số mô hình / Trained Weights
 
-Nguồn dataset (Kaggle):
+Vì file mô hình nặng nên không lưu trực tiếp trong repository.
+
+Tải file model tại release:
+- https://github.com/Hieu-Techie/Vehicle-Classification-System---InceptionV3/releases/download/v1.0.0/inception_v3_final.h5
+
+Sau đó đặt vào:
+- models/final/inception_v3_final.h5
+
+### Dataset nguồn / Dataset Source
+
+Kaggle dataset:
 - https://kaggle.com/datasets/8160678ef05f80141b0a318b74b345852ff1db0be8095541e2c6305c04c14ca2
 
-Lưu ý:
-- Thư mục `data/` được loại khỏi GitHub để repo nhẹ hơn.
-- Tải dataset từ Kaggle và đặt vào `data/processed/` khi chạy local.
-
-### Cách tải dataset từ Kaggle
-
-1. Mở trang dataset và lấy dataset slug:
-	- https://kaggle.com/datasets/8160678ef05f80141b0a318b74b345852ff1db0be8095541e2c6305c04c14ca2
-2. Cài Kaggle CLI và đặt API credential (`kaggle.json`) vào user profile.
-3. Tải và giải nén dataset vào thư mục `data/` của dự án.
+Tải bằng Kaggle CLI:
 
 ```powershell
 pip install kaggle
@@ -92,12 +114,7 @@ kaggle datasets download -d 8160678ef05f80141b0a318b74b345852ff1db0be8095541e2c6
 Expand-Archive -Path data\*.zip -DestinationPath data -Force
 ```
 
-4. Đảm bảo cấu trúc sau tồn tại trước khi chạy app:
-	- `data/processed/train/<class_name>/`
-	- `data/processed/val/<class_name>/`
-	- `data/processed/test/<class_name>/`
-
-Cấu trúc dataset cần dùng:
+Cấu trúc bắt buộc:
 
 ```text
 data/processed/
@@ -106,72 +123,109 @@ data/processed/
 |- test/bicycle|bus|car|motorcycle|truck
 ```
 
-## 5. Lệnh kiểm tra chất lượng (QA)
+## 🧪 Kiểm thử chất lượng / QA
 
-Phần này gồm các lệnh dùng để kiểm tra chất lượng model và độ ổn định của ứng dụng trước khi phát hành.
-
-Chạy đánh giá model:
+Đánh giá model:
 
 ```powershell
 python scripts/qa/evaluate_model.py
 ```
 
-File đầu ra:
-- `models/logs/evaluation_results.json`
-- `models/logs/confusion_matrix.csv`
-- `models/logs/classification_report.md`
+Kết quả lưu tại:
+- models/logs/evaluation_results.json
+- models/logs/confusion_matrix.csv
+- models/logs/classification_report.md
 
-Chạy smoke test web app:
+Smoke test web app:
 
 ```powershell
 python scripts/qa/webapp_smoke_test.py
 ```
 
-File đầu ra:
-- `models/logs/webapp_smoke_test_report.json`
+Kết quả lưu tại:
+- models/logs/webapp_smoke_test_report.json
 
-## 6. Snapshot metric hiện tại
+## 📊 Kết quả hiện tại / Current Metrics
 
-Theo file mới nhất `models/logs/evaluation_results.json`:
 - Test accuracy: 0.9975
 - Test samples: 1972
 
-## 7. Docker
+## 🐳 Docker
 
-### Build image
-
-Docker Desktop (hoặc Docker daemon tương đương) cần được bật trước khi build/run.
+Build image:
 
 ```powershell
 docker build -t vehicle-classification-system:local .
 ```
 
-### Chạy container
-
-Container cần mount thư mục `models/` local để app load:
-- `models/final/inception_v3_final.h5`
-- `models/logs/evaluation_results.json`
+Run container:
 
 ```powershell
 docker run --rm -p 8501:8501 -v "${PWD}/models:/app/models:ro" vehicle-classification-system:local
 ```
 
-### Chạy bằng Docker Compose
+Run với Docker Compose:
 
 ```powershell
 docker compose up --build
 ```
 
-## 8. Sẵn sàng để đẩy lên GitHub
+## 📁 Cấu trúc thư mục / Project Structure
 
-- Xem `docs/release_checklist.md` trước khi push.
-- Không đưa `venv/`, model weights và cache local vào git.
-- Nên xóa cache source như `__pycache__/` trước khi public.
-- Dữ liệu được host riêng trên Kaggle, vì vậy toàn bộ `data/` đã được ignore trong `.gitignore`.
+```text
+.
+|- app.py
+|- requirements.txt
+|- requirements.docker.txt
+|- Dockerfile
+|- docker-compose.yml
+|- src/
+|  |- data/
+|  |- models/
+|  |- utils/
+|- scripts/
+|  |- qa/
+|     |- evaluate_model.py
+|     |- webapp_smoke_test.py
+|- models/
+|  |- checkpoints/
+|  |- final/
+|  |- logs/
+|- data/
+|  |- processed/
+|- MODEL_CARD.md
+```
 
-## 9. Xử lý sự cố
+## 🛠️ Xử lý sự cố / Troubleshooting
 
-- Nếu model không load được, kiểm tra file `models/final/inception_v3_final.h5`.
-- Nếu gặp lỗi TensorFlow, đảm bảo đã cài `tensorflow==2.15.0`.
-- Nếu upload không hợp lệ, định dạng hỗ trợ là `.jpg`, `.jpeg`, `.png` và giới hạn 10 MB.
+- Model không load: kiểm tra đúng tên và vị trí file model trong models/final.
+- App không chạy: đảm bảo đã kích hoạt môi trường ảo và cài đủ dependencies.
+- Docker lỗi kết nối: bật Docker Desktop trước khi build/run.
+- Upload thất bại: chỉ hỗ trợ jpg, jpeg, png và dung lượng ảnh trong giới hạn app.
+
+## 🤝 Đóng góp / Contributing
+
+Hiện tại dự án chưa nhận pull request trực tiếp để đảm bảo ổn định bản phát hành.
+
+Bạn vẫn có thể hỗ trợ bằng cách:
+- Mở Issue để báo lỗi hoặc đề xuất tính năng.
+- Mô tả rõ bước tái hiện, log lỗi và ảnh minh họa (nếu có).
+- Theo dõi các bản cập nhật tiếp theo khi repo mở lại quy trình đóng góp.
+
+## 📝 Giấy phép / License
+
+Dự án sử dụng giấy phép MIT.
+
+Xem chi tiết tại file [LICENSE](LICENSE).
+
+## 📧 Liên hệ / Contact
+
+Nếu bạn có câu hỏi hoặc góp ý, vui lòng mở Issue tại:
+- https://github.com/Hieu-Techie/Vehicle-Classification-System---InceptionV3/issues
+
+## 🌟 Acknowledgments
+
+- TensorFlow Documentation: https://www.tensorflow.org/learn
+- Streamlit Documentation: https://docs.streamlit.io/
+- Kaggle Datasets: https://www.kaggle.com/datasets
 
