@@ -1,61 +1,50 @@
 {
-  "test_accuracy": 0.9974645030425964,
-  "num_test_samples": 1972,
-  "class_names": [
-    "bicycle",
-    "bus",
-    "car",
-    "motorcycle",
-    "truck"
-  ],
+  "test_loss": 0.23585228621959686,
+  "test_accuracy": 0.9974644780158997,
   "classification_report": {
     "bicycle": {
       "precision": 1.0,
       "recall": 0.995,
       "f1-score": 0.9974937343358395,
-      "support": 400,
-      "name_vi": "Xe đạp"
+      "support": 400.0
     },
     "bus": {
       "precision": 0.9975062344139651,
       "recall": 1.0,
       "f1-score": 0.9987515605493134,
-      "support": 400,
-      "name_vi": "Xe buýt"
+      "support": 400.0
     },
     "car": {
       "precision": 0.9975,
       "recall": 0.9975,
       "f1-score": 0.9975,
-      "support": 400,
-      "name_vi": "Xe ô tô con"
+      "support": 400.0
     },
     "motorcycle": {
       "precision": 0.9946524064171123,
       "recall": 1.0,
       "f1-score": 0.9973190348525469,
-      "support": 372,
-      "name_vi": "Xe máy"
+      "support": 372.0
     },
     "truck": {
       "precision": 0.9974937343358395,
       "recall": 0.995,
       "f1-score": 0.9962453066332916,
-      "support": 400,
-      "name_vi": "Xe tải"
+      "support": 400.0
+    },
+    "accuracy": 0.9974645030425964,
+    "macro avg": {
+      "precision": 0.9974304750333834,
+      "recall": 0.9974999999999999,
+      "f1-score": 0.9974619272741982,
+      "support": 1972.0
+    },
+    "weighted avg": {
+      "precision": 0.9974699202267179,
+      "recall": 0.9974645030425964,
+      "f1-score": 0.9974639561726801,
+      "support": 1972.0
     }
-  },
-  "macro avg": {
-    "precision": 0.9974304750333834,
-    "recall": 0.9974999999999999,
-    "f1-score": 0.9974619272741982,
-    "support": 1972
-  },
-  "weighted avg": {
-    "precision": 0.9974699202267179,
-    "recall": 0.9974645030425964,
-    "f1-score": 0.9974639561726801,
-    "support": 1972
   },
   "confusion_matrix": [
     [

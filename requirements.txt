@@ -1,20 +1,7 @@
-# ======================== DEPENDENCIES ========================
-# Vehicle Classification System - InceptionV3
-# Python 3.10+
-#
-# File này dành cho LOCAL (Streamlit web app sau khi train xong)
-# Training được thực hiện trên KAGGLE (đã có sẵn TF/Keras)
-# Cài đặt: pip install -r requirements.txt
-# ===============================================================
-
-# Deep Learning (cần cho inference trên local)
 tensorflow==2.15.0
 
-# Web App
 streamlit==1.30.0
 
-# Xử lý ảnh
 pillow>=10.2.0
 
-# Xử lý dữ liệu
 numpy>=1.24.3

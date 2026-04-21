@@ -18,8 +18,6 @@ models/final/*.h5
 models/logs/*.csv
 models/logs/webapp_smoke_test_report.json
 
-data/
-docs/handover_checklist.md
-docs/release_checklist.md
+/data/
 
 .streamlit/secrets.toml
