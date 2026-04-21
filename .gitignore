@@ -12,7 +12,7 @@ Thumbs.db
 .idea/
 .specify/
 .vscode/
-
+ 
 models/checkpoints/*.h5
 models/final/*.h5
 models/logs/*.csv

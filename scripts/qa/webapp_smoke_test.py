@@ -14,7 +14,7 @@ from src.models.predictor import du_doan, kiem_tra_file_hop_le  # noqa: E402
 from scripts.qa.evaluate_model import load_model  # noqa: E402
 from src.utils.config import CLASS_NAMES, LOGS_DIR, TEST_DIR, MAX_FILE_SIZE_MB  # noqa: E402
 
-
+ 
 def pick_sample_images() -> list[Path]:
     samples: list[Path] = []
     test_root = Path(TEST_DIR)

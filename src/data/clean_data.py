@@ -34,7 +34,7 @@ MIN_FILE_SIZE = 1_000        # 1 KB — file quá nhỏ có thể bị lỗi
 MAX_FILE_SIZE = 10_000_000   # 10 MB — file quá lớn
 EXPECTED_SPLITS = ("train", "val", "test")
 
-
+ 
 def kiem_tra_anh_doc_duoc(file_path: str) -> bool:
     """
     Kiểm tra xem file ảnh có đọc được không.

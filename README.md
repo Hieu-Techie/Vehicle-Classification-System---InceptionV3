@@ -1,4 +1,4 @@
-# Vehicle Classification System with InceptionV3
+# Vehicle Classification System with InceptionV3 
 
 ![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.15-FF6F00?logo=tensorflow&logoColor=white)

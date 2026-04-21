@@ -1,4 +1,4 @@
-# Model Card: InceptionV3 Vehicle Classifier
+# Model Card: InceptionV3 Vehicle Classifier 
 
 ![Model](https://img.shields.io/badge/Model-InceptionV3-1f6feb)
 ![Framework](https://img.shields.io/badge/Framework-TensorFlow%20%2F%20Keras-FF6F00)
